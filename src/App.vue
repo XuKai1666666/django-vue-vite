@@ -23,6 +23,11 @@ export default {
 </script>
 
 <template>
+  <div id="header">
+    <h1>My Drf-Vue Blog</h1>
+    <hr>
+  </div>
+
   <div v-for="article in info.results" v-bind:key="article.url" id="articles">
     <div>
       <span v-for="tag in article.tags" v-bind:key="tag" class="tag">
@@ -34,9 +39,35 @@ export default {
     </div>
     <div>{{ formatted_time(article.created) }}</div>
   </div>
+
+  <div id="footer">
+    <p>django-vue-vite.com</p>
+  </div>
 </template>
 
 <style scoped>
+#app {
+  font-family: Georgia, Arial, sans-serif;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+#header {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+  background: whitesmoke;
+  text-align: center;
+  font-weight: bold;
+}
+
 #articles {
   padding: 10px;
 }
