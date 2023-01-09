@@ -1,7 +1,5 @@
-<script  lang="ts">
-export default {
-    name: 'BlogFooter',
-}
+<script setup lang="ts">
+
 </script>
 <template>
     <br><br><br>

@@ -1,13 +1,9 @@
 <script setup  lang="ts">
-import ArticleList from './components/ArticleList.vue'
-import BlogHeader from './components/BlogHeader.vue'
-import BlogFooter from './components/BlogFooter.vue'
+import Home from './views/Home.vue';
 </script>
 
 <template>
-  <BlogHeader />
-  <ArticleList />
-  <BlogFooter />
+  <Home/>
 </template>
 
 <style scoped>

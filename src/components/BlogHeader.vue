@@ -1,8 +1,5 @@
-<script  lang="ts">
+<script setup lang="ts">
 
-export default {
-    name: 'BlogHeader',
-}
 </script>
 <template>
     <div id="header">
