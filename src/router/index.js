@@ -9,7 +9,7 @@ const routes = [
         component: Home,
     },
     {
-        path: "/article/:id",
+        path: "/article/:id",//路径参数设置
         name: "ArticleDetail",
         component: ArticleDetail
     }
