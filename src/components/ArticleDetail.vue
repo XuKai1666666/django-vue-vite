@@ -17,7 +17,6 @@
     </div>
 
     <BlogFooter />
-    <div>{{ article }}</div>
 </template>
 
 <script lang="ts">
