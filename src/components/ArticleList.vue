@@ -9,9 +9,7 @@ export default {
         }
     },
     mounted() {
-        axios
-            .get('/api/article')
-            .then(response => (this.info = response.data))
+        this.get_article_data()
     },
     methods: {
         formatted_time: function (iso_date_string) {
@@ -19,7 +17,7 @@ export default {
             return date.toLocaleDateString()
         },
         // 判断页面是否存在
-        is_page_exists(direction) {
+        is_page_exists: function (direction) {
             if (direction === 'next') {
                 return this.info.next !== null
             }
