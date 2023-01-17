@@ -12,7 +12,8 @@ export default {
                 if (text.charAt(0) !== '') {
                     this.$router.push({name: 'Home', query: { search: text }})
                 }
-            }
+            },
+            
         }
     }
 </script>
