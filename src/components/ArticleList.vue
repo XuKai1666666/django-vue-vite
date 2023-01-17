@@ -48,14 +48,42 @@ export default {
         // 获取文章列表数据
         get_article_data: function () {
             let url = '/api/article';
-            const page = Number(this.$route.query.page);
-            if (!isNaN(page) && (page !== 0)) {
-                url = url + '/?page=' + page;
+
+            let params = new URLSearchParams();
+            // 注意 appendIfExists 方法是原生没有的
+            // 原生只有 append 方法，但此方法不能判断值是否存在
+            params.appendIfExists('page', this.$route.query.page);
+            params.appendIfExists('search', this.$route.query.search);
+
+            const paramsString = params.toString();
+            if (paramsString.charAt(0) !== '') {
+                url += '/?' + paramsString
             }
 
             axios
                 .get(url)
                 .then(response => (this.info = response.data))
+        },
+        get_path: function (direction) {
+            let url = '';
+
+            try {
+                switch (direction) {
+                    case 'next':
+                        if (this.info.next !== undefined) {
+                            url += (new URL(this.info.next)).search
+                        }
+                        break;
+                    case 'previous':
+                        if (this.info.previous !== undefined) {
+                            url += (new URL(this.info.previous)).search
+                        }
+                        break;
+                }
+            }
+            catch { return url }
+
+            return url
         }
     },
     watch: {
