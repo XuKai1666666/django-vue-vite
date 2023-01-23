@@ -112,7 +112,7 @@ export default {
     </div>
     <div id="paginator">
         <span v-if="is_page_exists('previous')">
-            <router-link :to="{ name: 'Home', query: { page: get_page_param('previous') } }">
+            <router-link :to="get_path('previous')">
                 Prev
             </router-link>
         </span>
@@ -120,7 +120,7 @@ export default {
             {{ get_page_param('current') }}
         </span>
         <span v-if="is_page_exists('next')">
-            <router-link :to="{ name: 'Home', query: { page: get_page_param('next') } }">
+            <router-link :to="get_path('next')">
                 Next
             </router-link>
         </span>
