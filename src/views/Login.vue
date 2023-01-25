@@ -53,8 +53,18 @@ export default {
                     password: this.signupPwd,
                 })
                 .then(function (response) {
-                    that.signupResponse = response.data;
-                    alert('用户注册成功，快去登录吧！');
+                    const storage = localStorage;
+                    // Date.parse(...) 返回1970年1月1日UTC以来的毫秒数
+                    // Token 被设置为1分钟，因此这里加上60000毫秒
+                    const expiredTime = Date.parse(response.headers.date) + 60000;
+                    // 设置 localStorage
+                    storage.setItem('access.myblog', response.data.access);
+                    storage.setItem('refresh.myblog', response.data.refresh);
+                    storage.setItem('expiredTime.myblog', expiredTime);
+                    storage.setItem('username.myblog', that.signinName);
+                    // 路由跳转
+                    // 登录成功后回到博客首页
+                    that.$router.push({ name: 'Home' });
                 })
                 .catch(function (error) {
                     alert(error.message);
