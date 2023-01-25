@@ -1,21 +1,21 @@
 <script lang="ts">
 export default {
-        name: 'BlogHeader',
-        data: function () {
-            return {
-                searchText: ''
+    name: 'BlogHeader',
+    data: function () {
+        return {
+            searchText: ''
+        }
+    },
+    methods: {
+        searchArticles() {
+            const text = this.searchText.trim();
+            if (text.charAt(0) !== '') {
+                this.$router.push({ name: 'Home', query: { search: text } })
             }
         },
-        methods: {
-            searchArticles() {
-                const text = this.searchText.trim();
-                if (text.charAt(0) !== '') {
-                    this.$router.push({name: 'Home', query: { search: text }})
-                }
-            },
-            
-        }
+
     }
+}
 </script>
 <template>
     <div id="header">
@@ -30,6 +30,9 @@ export default {
             </div>
         </div>
         <hr>
+        <div class="login">
+            <router-link to="/login" class="login-link">登录</router-link>
+        </div>
     </div>
 </template>
 <style scoped>
@@ -98,5 +101,14 @@ button {
     content: "搜索";
     font-size: 13px;
     color: white;
+}
+
+.login-link {
+    color: black;
+}
+
+.login {
+    text-align: right;
+    padding-right: 5px;
 }
 </style>
