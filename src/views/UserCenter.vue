@@ -1,5 +1,5 @@
 <template>
-    <BlogHeader />
+    <BlogHeader ref="header" />
     <div id="user-center">
         <h3>更新资料信息</h3>
         <form>
@@ -39,6 +39,7 @@ export default {
             username: '',
             password: '',
             token: '',
+            welcomeName: '',
         }
     },
     mounted() {
@@ -87,6 +88,7 @@ export default {
                             const name = response.data.username;
                             storage.setItem('username.myblog', name);
                             that.$router.push({ name: 'UserCenter', params: { username: name } });
+                            that.$refs.header.refresh();
                         })
                 });
         }

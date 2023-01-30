@@ -10,6 +10,11 @@ export default {
             hasLogin: false,
         }
     },
+    methods: {
+        refresh() {
+            this.username = localStorage.getItem('username.myblog');
+        }
+    },
     mounted() {
         authorization().then((data) => [this.hasLogin, this.username] = data);
     }
@@ -26,7 +31,7 @@ export default {
         <div class="login">
             <div v-if="hasLogin">
                 <div class="dropdown">
-                    <button class="dropbtn">欢迎, {{ username }}!</button>
+                    <button class="dropbtn">欢迎, {{ name }}!</button>
                     <div class="dropdown-content">
                         <router-link :to="{ name: 'UserCenter', params: { username: username } }">用户中心</router-link>
                     </div>
