@@ -40,6 +40,15 @@ export default {
 </template>
 
 <style scoped>
+.login-link {
+    color: black;
+}
+
+.login {
+    text-align: right;
+    padding-right: 5px;
+}
+
 /* 样式来源: https://www.runoob.com/css/css-dropdowns.html* /
     /* 下拉按钮样式 */
 .dropbtn {
