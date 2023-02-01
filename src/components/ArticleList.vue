@@ -98,6 +98,9 @@ export default {
 <template>
     <div v-for="article in info.results" v-bind:key="article.url" id="articles">
         <div>
+            <span v-if="article.category !== null" class="category">
+                {{ article.category.title }}
+            </span>
             <span v-for="tag in article.tags" v-bind:key="tag" class="tag">
                 {{ tag }}
             </span>
@@ -128,6 +131,16 @@ export default {
 </template>
 
 <style scoped>
+.category {
+    padding: 5px 10px 5px 10px;
+    margin: 5px 5px 5px 0;
+    font-family: Georgia, Arial, sans-serif;
+    font-size: small;
+    background-color: darkred;
+    color: whitesmoke;
+    border-radius: 15px;
+}
+
 #articles {
     padding: 10px;
 }
