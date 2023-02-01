@@ -65,12 +65,21 @@ export default {
                     // 路由跳转
                     // 登录成功后回到博客首页
                     that.$router.push({ name: 'Home' });
+                    // 是否为管理员
+                    axios
+                        .get('/api/user/' + that.signinName + '/')
+                        .then(function (response) {
+                            storage.setItem('isSuperuser.myblog', response.data.is_superuser);
+                            // 路由跳转修改到这里
+                            that.$router.push({ name: 'Home' });
+                        });
                 })
                 .catch(function (error) {
                     alert(error.message);
                     // Handling Error here...
                     // https://github.com/axios/axios#handling-errors
                 });
+
         },
     }
 }
